@@ -1,0 +1,260 @@
+Exercício 1: Escreva um programa que calcule o fatorial de um número informado pelo usuário. Um método chamado calcularFatorial 
+deverá retornar o resultado final. 
+Dica: O fatorial de um número N é dado pela fórmula: N! = 1 * 2 * 3 * 4 * 5 * ... * N 
+
+static void Main(string[] args)
+{
+	int f;
+	Console.Write("Digite o valor a fatorar:");
+	f=int.Parse(Console.ReadLine());
+	Console.Write("O fatorial de {0} é {1}",f,calcularFatorial(f));
+	Console.ReadKey();
+}
+
+static int calcularFatorial(int n)
+{
+	int fat=1, x;
+	for (x=1;x<=n;x++)
+	{
+		fat=fat*x;
+	}
+	return fat;
+}
+
+
+Exercício 2: Escreva um programa que leia dois valores reais e apresente a diferença do maior para o menor. Um método chamado 
+diferenca deverá ser implementado para realizar o cálculo e exibir o resultado. 
+
+static void diferenca(double a, double b)
+{
+	double c=0;
+	if (a>b){
+		c=a-b;
+	}else{
+		c=b-a;
+	}
+	Console.WriteLine("A diferença entre {0} e {1} é {2}",a,b,c);
+}
+
+static void Main(string[] args){
+	double v1,v2;
+	Console.Write("Digite um valor: ");
+	v1=double.Parse(Console.ReadLine())	;
+	Console.Write("Digite outro valor: ");
+	v2=double.Parse(Console.ReadLine())	;
+	diferenca(v1,v2);
+	Console.ReadKey();
+}
+
+
+Exercício 3: Escreva um programa que leia três valores para os lados de um triângulo (variáveis A, B e C). Verificar se cada 
+lado é menor que a soma dos outros dois lados. Se sim, saber de A==B e se B==C, sendo verdade o triângulo é equilátero; Se não, 
+verificar de A==B ou se A==C ou se B==C, sendo verdade o triângulo é isósceles; e caso contrário, o triângulo será escaleno. 
+Caso os lados fornecidos não caracterizarem um triângulo, avisar a ocorrência. Deverá ser implementado um método para verificar 
+a validade de cada tipo de triângulo. Estes métodos deverão retornar um valor lógico (true ou false). 
+
+static void Main(string[] args){
+	int a,b,c;
+	Console.Write("Digite o lado 1: ");
+	a=int.Parse(Console.ReadLine());
+	Console.Write("Digite o lado 2: ");
+	b=int.Parse(Console.ReadLine());
+	Console.Write("Digite o lado 3 ");
+	c=int.Parse(Console.ReadLine());
+	if (a<b+c && b<a+c && c<a+b){
+		if (equilatero(a,b,c)){
+			Console.Write("O triângulo é equilátero!");
+		}else if (isosceles(a,b,c)){
+			Console.Write("O triângulo é isósceles!");
+		}else if (escaleno(a,b,c)){
+			Console.Write("O triângulo é escaleno!");
+		}
+	}else{
+		Console.Write("Não forma um triângulo!");
+	}
+	Console.ReadKey();
+}
+
+static bool equilatero(int a, int b, int c){
+	bool resp=false;
+	if (a==b && a==c){
+		resp=true;
+	}
+	return resp;
+}
+
+static bool isosceles(int a, int b, int c){
+	bool resp=false;
+	if (a==b || a==c || b==c){
+		resp=true;
+	}
+	return resp;
+}
+
+static bool escaleno(int a, int b, int c){
+	bool resp=false;
+	if (a!=b && a!=c && b!=c){
+		resp=true;
+	}
+	return resp;
+}
+
+
+Exercício 4: Tendo como dados de entrada a altura e o sexo de uma pessoa, faça um programa que calcule o peso ideal, utilizando 
+as seguintes fórmulas: (h = altura) 
+- Para homens: (72.7*h) - 58 
+- Para mulheres: (62.1 *h) - 44.7 
+Um método chamado calcularPesoIdeal deverá ser implementado para a realização do cálculo, sendo que deverá receber por 
+parâmetro o sexo e a altura da pessoa.
+
+static void calcularPesoIdeal(char sexo, double altura){
+	double res;
+	if (sexo=='f' || sexo=='F'){
+		res=(62.1*altura)-44.7;
+	}else{
+		res=(72.7*altura)-58;
+	}
+	Console.Write("Seu peso ideal é {0:N2}",res);
+}
+
+static void Main(string[] args){
+	char s;
+	double a;
+	Console.Write("Digite <F>-feminino ou <M>-masculino: ");
+	s=char.Parse(Console.ReadLine().ToUpper());
+	Console.Write("Digite sua altura: ");
+	a=double.Parse(Console.ReadLine());
+	calcularPesoIdeal(s,a);
+	Console.ReadKey();
+}
+
+
+Exercício 5: Escreva um programa que exiba o seguinte menu e crie um método para realizar os cálculos de cada item deste menu: 
+1 – Soma 
+2 – Subtração 
+3 – Divisão 
+4 – Multiplicação 
+5 – Resto da Divisão 
+6 – Dobro 
+7 – Quadrado 
+8 – Cubo 
+9 – Raiz Quadrada 
+0 – Sair 
+
+static void Main(string[] args){
+	int menu;
+	double v1,v2;
+	do{
+		Console.Clear();
+		Console.WriteLine("CALCULADORA\n\n1-Soma\n2-Subtração\n3-Divisão\n4-Multiplicação\n5-Resto da divisão\n6-Dobro\n7-Quadrado\n8-Cubo\n9-Raiz Quadrada\n0-Sair");
+		Console.Write("Digite sua opção: ");
+		menu=int.Parse(Console.ReadLine());
+		if (menu>0 && menu<10){
+			Console.Write("Digite o primeiro valor: ");
+			v1=double.Parse(Console.ReadLine());
+			if (menu<6){
+				Console.Write("Digite o segundo valor: ");
+				v2=double.Parse(Console.ReadLine());
+			}
+		}
+		switch (menu){
+			case 1:
+				Soma(v1,v2);
+				break;
+			case 2:
+				Subtracao(v1,v2);
+				break;
+			case 3:
+				Divisao(v1,v2);
+				break;
+			case 4:
+				Multiplicacao(v1,v2);
+				break;
+			case 5:
+				RestoDivisao(v1,v2);
+				break;
+			case 6:
+				Dobro(v1);
+				break;
+			case 7:
+				Quadrado(v1);
+				break;
+			case 8:
+				Cubo(v1);
+				break;
+			case 9:
+				RaizQuadrada(v1);
+				break;
+			default:
+				if (menu!=0){
+					Console.Write("Opção inválida!");
+				}
+		}
+		Console.Write("Pressione uma tecla...");
+		Console.ReadKey();
+	}while(menu!=0);
+}
+
+static void Soma(double v1, double v2){
+	Console.Write("Soma={0}",(v1+v2));
+}
+
+static void Subtracao(double v1, double v2){
+	Console.Write("Subtração {0}",(v1-v2));
+}
+
+static void Divisao(double v1, double v2){
+	Console.Write("Divisão={0:N2}",(v1/v2));
+}
+
+static void Multiplicacao(double v1, double v2){
+	Console.Write("Multiplicação={0}",(v1*v2));
+}
+
+static void RestoDivisao(double v1, double v2){
+	Console.Write("Resto da divisao={0}",(v1%v2));
+}
+
+static void Dobro(double v1){
+	Console.Write("Dobro={0}",(v1+v1));
+}
+
+static void Quadrado(double v1){
+	Console.Write("Quadrado={0}",(v1*v1));
+}
+
+static void Cubo(double v1){
+	Console.Write("Cubo={0}",(Math.Pow(v1,3)));
+}
+
+static void RaizQuadrada(double v1){
+	Console.Write("Raiz quadrada={0}",(Math.Sqrt(v1)));
+}
+
+
+Exercício 6: Escreva um programa que retorne o número do quadrante (1,2,3 ou 4) através de um método chamado verificaQuadrante, 
+que deverá receber um valor para x e um valor para y (coordenadas). 
+
+static void verificaQuadrante(int x, int y){
+	if (x>0 && y>0){
+		Console.Write("x e y está no primeiro Quadrante!");
+	}else if (x<0 && y>0){
+		Console.Write("x e y está no segundo Quadrante!");
+	}else if (x<0 && y<0){
+		Console.Write("x e y está no terceiro Quadrante!");
+	}else if (x>0 && y<0){
+		Console.Write("x e y está no quarto Quadrante!");
+	}else{
+		Console.Write("x e y está no ponto central!");
+	}
+}
+
+static void Main(string[] args){
+	int x, y;
+	Console.Write("Digite a coordenada x: ");
+	x=int.Parse(Console.ReadLine());
+	Console.Write("Digite a coordenada y: ");
+	y=int.Parse(Console.ReadLine());
+	verificaQuadrante(x,y);
+	Console.ReadKey();
+} 
