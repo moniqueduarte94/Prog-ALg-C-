@@ -1,0 +1,92 @@
+Exercícios de fixação de laços de repetição:
+1) Desenvolva um programa que mostre na tela a tabuada do 4.
+
+int c;
+for (c=1;c<=10;c++)
+{
+	Console.WriteLine("4 x "+c+" = "+(4*c));
+}
+Console.ReadKey();
+--------------------------------------------------------
+int c=1;
+while (c<=10)
+{
+	Console.WriteLine("4 x "+c+" = "+(4*c));
+	c++;
+}
+Console.ReadKey();
+--------------------------------------------------------
+int c=1;
+do
+{
+	Console.WriteLine("4 x "+c+" = "+(4*c));
+	c++;
+} while (c<=10);
+Console.ReadKey();
+
+
+
+2) Desenvolva um programa que mostre na tela uma tabuada escolhida pelo usuário.
+
+int c, t;
+Console.WriteLine("Qual tabuada quer ver: ");
+t=int.Parse(Console.ReadLine());
+for (c=1;c<=10;c++)
+{
+	Console.WriteLine(t+" x "+c+" = "+(t*c));
+}
+Console.ReadKey();
+
+3) Elabore um programa que mostre a média aritmética de 15 números digitados pelo usuário.
+
+double soma=0, num, x;
+for (x=1;x<=15;x++)
+{
+	Console.Write("Digite um número: ");
+	num=double.Parse(Console.ReadLine());
+	soma=soma+num;
+}
+Console.Write("A média é: "+(soma/15));
+Console.ReadKey();
+
+
+
+4) Faça um programa que receba valores pelo usuário, quando o usuário digitar 0 mostre o maior valor digitado.
+
+int n, maior=0;
+do{
+	Console.Write("Digite um número: ");
+	n=int.Parse(Console.ReadLine());
+	if (maior<n)
+	{
+		maior=n;
+	}
+} while (n!=0);
+Console.Write("O maior número digitado foi: "+maior);
+Console.ReadKey();
+
+
+
+5) Faça um programa que receba valores pelo usuário, quando o usuário digitar 0 mostre a quantidade de números
+pares, ímpares, positivos e negativos digitados.
+
+int n, pares=0,impares=0,positivos=0,negativos=0;
+do{
+	Console.Write("Digite um número: ");
+	n=int.Parse(Console.ReadLine());
+	if (n%2==0){
+		pares++;
+	} else {
+		impares++;
+	}
+	if (n>=0){
+		positivos++;
+	} else {
+		negativos++;
+	}
+} while (n!=0);
+Console.Write("Números pares: "+pares);
+Console.Write("Números ímpares: "+impares);
+Console.Write("Números positivos: "+positivos);
+Console.Write("Números negativos: "+negativos);
+Console.ReadKey();
