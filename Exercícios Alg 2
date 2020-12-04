@@ -1,0 +1,231 @@
+Exercício 1: Escreva um programa que exiba na tela em ordem crescente, apenas os números pares existentes de 11 a 250. 
+
+int i;
+
+for (i=11;i<=250;i++){    // i++ ==> i=i+1
+	if (i%2==0){
+		Console.WriteLine(i);
+	}
+}
+Console.ReadKey();
+
+
+Exercício 2: Escreva um programa que exiba na tela em ordem decrescente, apenas os números ímpares existentes entre dois 
+números digitados pelo usuário (inclusive eles). 
+
+int i,n1,n2;
+
+Console.Write("Digite um valor: ");
+n1=int.Parse(Console.ReadLine());
+Console.Write("Digite outro valor: ");
+n2=int.Parse(Console.ReadLine());
+
+if (n1>n2){
+	for (i=n1;i>=n2;i--){
+		if (i%2==1){
+			Console.WriteLine(i);
+		}
+	}
+}else{
+	for (i=n2;i>=n1;i--){
+		if (i%2==1){
+			Console.WriteLine(i);
+		}
+	}
+}
+Console.ReadKey();
+
+
+Exercício 3: Escreva um programa que exiba na tela a tabuada de um número que deverá ser informado pelo usuário 
+(deverá ser usada qualquer estrutura de repetição). 
+Exemplo: Digite um número: 4 
+4 x 1 = 4 
+4 x 2 = 8 
+4 x 3 = 12 
+4 x 4 = 16 
+4 x 5 = 20 
+4 x 6 = 24 
+4 x 7 = 28 
+4 x 8 = 32 
+4 x 9 = 36 
+4 x 10 = 40 
+
+int c, tab;
+
+Console.Write("Deseja ver qual tabuada: ");
+tab=int.Parse(Console.ReadLine());
+
+for (c=1;c<=10;c++){
+	Console.WriteLine(tab+"x"+c+"="+(tab*c));
+}
+Console.ReadKey();
+
+
+Exercício 4: Escreva um programa que exiba na tela a quantidade de números ímpares existentes entre dois números que o 
+usuário digitar (testar inclusive os números digitados).
+
+int i,n1,n2,impares=0;
+
+Console.Write("Digite um valor: ");
+n1=int.Parse(Console.ReadLine());
+Console.Write("Digite outro valor: ");
+n2=int.Parse(Console.ReadLine());
+
+if (n1>n2){
+	for (i=n1;i>=n2;i--){
+		if (i%2==1){
+			impares++;
+		}
+	}
+}else{
+	for (i=n2;i>=n1;i--){
+		if (i%2==1){
+			impares++;
+		}
+	}
+}
+Console.Write("Quantidade de números ímpares é: "+impares);
+Console.ReadKey();
+
+
+Exercício 5: Escreva um programa que leia 15 números inteiros e exiba na tela ao final, o maior número que foi digitado 
+pelo usuário. 
+
+int x,n,maior=0;
+
+for (x=1;x<=15;x++){
+	Console.Write("Digite o {0}º valor: ",x);
+	n=int.Parse(Console.ReadLine());
+	if (x==1 || n>maior){
+		maior=n;
+	}
+}
+Console.Write("O maior número digitado foi: "+maior);
+Console.ReadKey();
+
+
+Exercício 6: Escreva um programa que calcule e exiba a média de 10 notas digitadas pelo usuário. Considerar notas 
+válidas, somente valores entre 0 (zero) e 10 (dez). Se o usuário digitar algum valor inválido, deverá ser exibida 
+uma mensagem informando o ocorrido. 
+
+int x;
+double n, media=0;
+
+for (x=1;x<=10;x++){
+	do{
+		Console.Write("Digite a "+x+"ª nota: ");
+		// Console.Write("Digite a {0}ª nota: ",x);
+		n=double.Parse(Console.ReadLine());
+		if (n<0 || n>10){
+			Console.WriteLine("Nota inválida, digite valores entre 0 e 10.");
+		}
+	}while(n<0 || n>10);
+	media=media+n;
+}
+media=media/10;
+Console.Write("A média é: "+media);
+Console.ReadKey();
+
+
+Exercício 7: Escreva um programa que exiba todos os números de 1 a 100 e a cada número que for múltiplo de 10, exiba 
+a mensagem “MÚLTIPLO DE 10”. 
+
+int n;
+
+for (n=1;n<=100;n++){
+	Console.WriteLine(n);
+	if (n%10==0){
+		Console.WriteLine("Múltiplo de 10");
+	}
+}
+Console.ReadKey();
+
+
+Exercício 8: Escreva um programa que calcule o fatorial de um número informado pelo usuário. 
+Dica: O fatorial de um número N é dado pela fórmula: N! = 1 * 2 * 3 * 4 * 5 * ... * N 
+
+int n, v, fat=1;
+
+Console.Write("Qual o fatorial quer ver: ");
+v=int.Parse(Console.ReadLine());
+
+for (n=1;n<=v;n++){
+	fat=fat*n;
+}
+Console.Write("O fatorial de {0} é {1}.",v,fat);
+Console.ReadKey();
+
+
+Exercício 9: Escreva um programa que leia vários números inteiros e ao final informe quantos números pares, quantos 
+números ímpares, quantos números positivos e quantos números negativos foram digitados pelo usuário. O programa só 
+deve parar de rodar quando o usuário responder "S" na seguinte pergunta, "Deseja encerrar o programa?". 
+
+int n, pares=0, impares=0, positivos=0, negativos=0;
+char sair='n';
+
+while (sair!='S' && sair!='s'){
+	Console.Write("Digite um número: ");
+	n=int.Parse(Console.ReadLine());
+	
+	if (n%2==0){
+		pares++;
+	}else{
+		impares++;
+	}
+	if (n>=0){
+		positivos++;
+	}else{
+		negativos++;
+	}
+	
+	Console.Write("Deseja encerrar o programa <S/N>? ");
+	sair=char.Parse(Console.ReadLine());
+}
+Console.WriteLine("Qtd. pares: "+pares);
+Console.WriteLine("Qtd. ímpares: "+impares);
+Console.WriteLine("Qtd. positivos: "+positivos);
+Console.WriteLine("Qtd. negativos: "+negativos);
+Console.ReadKey();
+
+
+Exercício 10: Faça um programa que leia as variáveis C e N, respectivamente código e número de horas trabalhadas de um 
+operário. Calcule o salário sabendo-se que ele ganha R$ 10,00 por hora. Quando o número de horas exceder a 50, calcule 
+o excesso de pagamento armazenando-o na variável E, caso contrário zerar tal variável. A hora excedente de trabalho 
+vale R$ 20,00. No final do processamento imprimir o salário total e o salário excedente. O programa só deve parar de 
+rodar quando o usuário responder "S" na seguinte pergunta, "Deseja encerrar o programa?".
+
+int c, n, e;
+double saltot, salexc;
+string sair;
+
+do{
+	Console.Write("Digite o código do operário: ");
+	c=int.Parse(Console.ReadLine());
+	Console.Write("Digite o número de horas trabalhadas: ");
+	n=int.Parse(Console.ReadLine());
+	if (n>50){
+		e=n-50;
+		salexc=e*20;
+		saltot=50*10+salexc;
+	}else{
+		e=0;
+		salexc=0;
+		saltot=n*10;
+	}
+	Console.WriteLine("Operário código {0} salário total: {1:N2} e salário execedente: {2:N2}.",c,saltot,salexc);
+	Console.Write("Deseja encerrar o programa <S/N>? ");
+	sair=Console.ReadLine();
+}while(sair.ToUpper()!="S");
+
+
+
+
+
+
+
+
+
+
+
+
+
